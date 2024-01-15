@@ -1,66 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>HODU</title>
     <style>
-        .heading{
+        .heading {
             background-color: #F2E9D8;
             position: relative;
         }
-        nav{
+
+        nav {
             list-style-type: none;
             margin: 0;
             padding: 0;
             display: flex;
         }
-        .logo1{
+
+        .logo1 {
             margin-right: 500px;
         }
-        .topnav p{
-            margin-right : 200px;
-            display:inline;
-        }
-        button{
+
+        button {
             background-color: orange;
-            color : white;
+            color: white;
             border-radius: 40px;
             width: 140px;
             height: 50px;
         }
-        .cat1, .headtxt{
+
+        .cat1,
+        .headtxt {
             display: inline-block;
         }
-        .cat1{
-            width: 415px;
-            height: 890px;
+
+        .cat1 {
+            width: 400px;
+            height: 800px;
             margin-left: 700px;
         }
-        .headtxt{
+
+        .headtxt {
             position: relative;
         }
 
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list li {
+            margin-right: 20px;
+        }
+
+        /* header part 끝!*/
+
+        .cat2 {
+            float: left;
+            margin-right: 20px;
+            width: 600px;
+            height: 390px;
+        }
+
+        .txt2 {
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 200px;
+            margin-top: 100px;
+        }
+
+        .txt2 p {
+            margin-bottom: 10px;
+        }
+
+        .bt {
+            display: block;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+        }
     </style>
 </head>
+
 <body>
-    <header class = "heading">
-        <nav class = "topnav">
-            <img src = "Logo-fin.svg" class = logo1>
-            <p>Home About Support</p>
-            <button class = "head-bt1">Download</button>
-        </nav>
-        <div class = "headtxt">
-            <div class = "txt">
+<header class="heading">
+    <nav class="topnav">
+        <img src="Logo-fin.svg" class=logo1>
+        <ul class="nav-list">
+            <li>Home</li>
+            <li>About </li>
+            <li>Support</li>
+        </ul>
+        <button class="head-bt1">Download</button>
+    </nav>
+    <div class="headtxt">
+        <div class="txt1">
             <p style="font-size: 48px "><b>Lorem Ipsum is simply<br>
                 dummy text of the printing and</b></p>
             <p style="font-size: 16px">Lorem Ipsum is simply dummy text of the printing and<br>
                 typesetting industry.<br>
                 Lorem Ipsum has been the industry's standard dummy text<br>
                 ever since the 1500s, when an unknown</p>
-                <button class = "head-bt2">Download</button>
-            </div>
-            <img src = "고양이 1.png" class = "cat1">
+            <button class="head-bt2">Download</button>
         </div>
-    </header>
+        <img src="고양이 1.png" class="cat1">
+    </div>
+</header>
+<div class="second">
+    <img src="img_4.png" class="cat2">
+    <div class="txt2">
+        <p style="font-size: 36px "><b>Lorem Ipsum is simply<br>
+            dummy text of the printing and dummy text</b></p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting<br>
+            industry. </p>
+    </div>
+</div>
+<div class="third">
+    <div class="txt3">
+        <p style="font-size: 36px">dummy text of the printing and dummy</p>
+        <p style="font-size: 16px">Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown</p>
+    </div>
+    <ul id="cats"></ul>
+    <div class="btset">
+        <p><b>HODU 계속 탐험하기</b></p>
+        <button id="showButton" onclick="showAllImages()">더 보기</button>
+    </div>
+</div>
+<div id = "map" style = "width: 80%;height: 400px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=800d6df949bc2d99d0108b6974bf8e1c"></script>
+
+<script>
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+<script>
+    const apiurl = 'https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME';
+
+    async function fetchimg() {
+        try {
+            const response = await fetch(apiurl);
+            if (!response.ok) {
+                throw new Error('오류 발생!');
+            }
+            const catimg = await response.json();
+            catimg.sort((a, b) => a.id.localeCompare(b.id));
+
+            displayimg(catimg[0]);
+        } catch (error) {
+            console.error('문제 발생!', error);
+        }
+    }
+
+    function displayimg(cat) {
+        const catlist = document.getElementById('cats');
+        const listitem = document.createElement('li');
+        listitem.className = 'cat-img';
+
+        const cats = document.createElement('img');
+        cats.src = cat.url;
+        cats.alt = '고양이 이미지';
+
+        listitem.appendChild(cats);
+        catlist.appendChild(listitem);
+    }
+
+    async function showAllImages() {
+        const btset = document.querySelector('.btset');
+        const cats = document.getElementById('cats');
+        const showButton = document.getElementById('showButton');
+
+        btset.style.display = 'none'; // btset 숨김
+
+        const response = await fetch(apiurl);
+        if (!response.ok) {
+            console.error('이미지를 가져오는 중에 오류가 발생했습니다.');
+            return;
+        }
+
+        const catImages = await response.json();
+        catImages.sort((a, b) => a.id.localeCompare(b.id));
+
+        // 처음 이미지는 이미 표시했으므로 나머지 이미지들 추가
+        catImages.slice(1).forEach((cat) => {
+            displayimg(cat);
+        });
+
+        // "더 보기" 버튼 숨김
+        showButton.style.display = 'none';
+    }
+
+    fetchimg();
+</script>
 </body>
+
 </html>
+
+<!-- 1일차 top header 작성하고 ui 가다듬기 -->
+<!-- 2일차 아래 고양이 사진과 글자를 내려놓고 ui 가다듬기-->
+<!-- 3일차 ajex를 통해 고양이 사진을 버튼을 눌렀을때 여러개 나오게끔 html과 css를 작성-->
+<!-- 4일차 지도부분 올리기-->
+<!-- 남은 일수에는 ui가다듬고 불만사항 수정하기 -->
+

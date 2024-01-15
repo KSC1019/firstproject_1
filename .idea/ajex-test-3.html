@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>고양이 이미지 리스트</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    li {
+      margin: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      width: 300px;
+      height: auto;
+      display: block;
+    }
+
+    #showButton {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<ul id="catList"></ul>
+<button id="showButton" onclick="showAllImages()">보기</button>
+
+<script>
+  const apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME';
+
+  async function fetchAndDisplayCatImages() {
+    try {
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error('이미지를 가져오는 중에 문제가 발생했습니다.');
+      }
+
+      const catImages = await response.json();
+
+      // ID 순으로 정렬
+      catImages.sort((a, b) => a.id.localeCompare(b.id));
+
+      // 초기에는 1번째 고양이 이미지만 표시
+      displaySingleCatImage(catImages[0]);
+    } catch (error) {
+      console.error('이미지를 가져오는 중에 오류가 발생했습니다:', error);
+    }
+  }
+
+  function displaySingleCatImage(cat) {
+    const catList = document.getElementById('catList');
+    const listItem = document.createElement('li');
+    listItem.className = 'cat-image';
+
+    const catImage = document.createElement('img');
+    catImage.src = cat.url;
+    catImage.alt = '고양이 이미지';
+
+    listItem.appendChild(catImage);
+    catList.appendChild(listItem);
+  }
+
+  async function showAllImages() {
+    const catList = document.getElementById('catList');
+    const showButton = document.getElementById('showButton');
+    showButton.style.display = 'none'; // 버튼 숨김
+
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      console.error('이미지를 가져오는 중에 오류가 발생했습니다.');
+      return;
+    }
+
+    const catImages = await response.json();
+    catImages.sort((a, b) => a.id.localeCompare(b.id));
+
+    // 처음 이미지는 이미 표시했으므로 나머지 이미지들 추가
+    catImages.slice(1).forEach((cat) => {
+      displaySingleCatImage(cat);
+    });
+  }
+
+  // 초기 이미지 로딩
+  fetchAndDisplayCatImages();
+</script>
+</body>
+</html>
