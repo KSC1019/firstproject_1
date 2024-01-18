@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>HODU</title>
     <style>
+
         .heading {
             background-color: #F2E9D8;
             position: relative;
@@ -53,7 +54,7 @@
             margin-right: 20px;
         }
 
-        /* header part 끝!*/
+        /* header part */
 
         .cat2 {
             float: left;
@@ -72,7 +73,7 @@
         .txt2 p {
             margin-bottom: 10px;
         }
-
+        /* second part */
         .bt {
             display: block;
         }
@@ -81,11 +82,34 @@
             width: 300px;
             height: auto;
         }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo2 {
+            width: 230px;
+            height: 70px;
+        }
+
+        .foot {
+            width: 230px;
+            height: 42px;
+        }
+        /* footer part*/
+        .sub {
+            display: flex;
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
 </head>
 
 <body>
-<header class="heading">
+<header class="heading"> <!-- 최상단의 로고와 소개글을 보여주는 헤더를 보여준다. -->
     <nav class="topnav">
         <img src="Logo-fin.svg" class=logo1>
         <ul class="nav-list">
@@ -108,6 +132,8 @@
         <img src="고양이 1.png" class="cat1">
     </div>
 </header>
+<!-- second 파츠에서는 아래 큰 고양이와 고양이 이미지 옆에 있는 텍스트를 작성하고
+작성한 텍스트를 고양이 이미지 우측에 두도록 css 설계-->
 <div class="second">
     <img src="img_4.png" class="cat2">
     <div class="txt2">
@@ -117,6 +143,8 @@
             industry. </p>
     </div>
 </div>
+<!-- third 파츠에서는 스크롤을 구현해서 버튼을 눌렀을 때 하나만 보이던 고양이 사진을
+연속으로 보여주게끔 html과 자바 스크립트를 작성했다-->
 <div class="third">
     <div class="txt3">
         <p style="font-size: 36px">dummy text of the printing and dummy</p>
@@ -129,8 +157,36 @@
         <button id="showButton" onclick="showAllImages()">더 보기</button>
     </div>
 </div>
+<img src="Rectangle%204.png" class = "underimg" style="width: 90% ">
+<!-- 줄바꿈용 직사각형, figma에 있길레 배치해둠 -->
+<!-- fourth에서는 지도를 보여주는 html을 작성하고 그 점을 보조하는 자바스크립트를 작성함
+해당 지도는 카카오 지도 api를 참고해서 가져옴-->
+<div class = "fourth">
+    <div class = "txt4">
+        <p>Where you’ll be</p>
+        <p>위치 정보임 ㅇㅇㅇ</p>
+    </div>
+</div>
 <div id = "map" style = "width: 80%;height: 400px;"></div>
-
+<img src = "img_5.png" style="width: 100%">
+<!-- sub에서는 figma에서 보이는 구독해달라는 창을 구현하려고 한다. 아직 미완성이라서 이곳은 질문이 필요-->
+<div class = "sub">
+    <div class = txt-container">
+    <p>Subscribe to our Blog post</p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+        Lorem Ipsum has been the industry's standard dummy text </p>
+    </div>
+    <form class="subscribe-section" method="post">
+        <label for="email" style="color: #000;">이메일:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">구독하기</button>
+    </form>
+</div>
+<!-- footer는 하단의 로고와 아이콘 그룹을 배치하도록 html을 작성했다.-->
+<nav class = "footer">
+    <img src = "Logo-fin.svg" class="logo2" style = "width: 230px;height : 70px">
+    <img src ="footer-icon-group.png" class = "foot" style = "width: 230px;height : 42px">
+</nav>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=800d6df949bc2d99d0108b6974bf8e1c"></script>
 
 <script>
@@ -204,10 +260,4 @@
 </body>
 
 </html>
-
-<!-- 1일차 top header 작성하고 ui 가다듬기 -->
-<!-- 2일차 아래 고양이 사진과 글자를 내려놓고 ui 가다듬기-->
-<!-- 3일차 ajex를 통해 고양이 사진을 버튼을 눌렀을때 여러개 나오게끔 html과 css를 작성-->
-<!-- 4일차 지도부분 올리기-->
-<!-- 남은 일수에는 ui가다듬고 불만사항 수정하기 -->
 
