@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>HODU</title>
     <style>
-
+        /*heading부터 nav-list li 까지는 header에 적용되는 css */
         .heading {
             background-color: #F2E9D8;
             position: relative;
@@ -54,8 +54,8 @@
             margin-right: 20px;
         }
 
-        /* header part */
-
+        /* header part end
+        cat2부터 txt2 p까지 second에 적용되는 css*/
         .cat2 {
             float: left;
             margin-right: 20px;
@@ -73,7 +73,8 @@
         .txt2 p {
             margin-bottom: 10px;
         }
-        /* second part */
+        /* second part end
+        */
         .bt {
             display: block;
         }
@@ -108,7 +109,7 @@
             width: 500px; /* 폭을 500픽셀로 제한 */
             position: absolute; /* 겹치도록 하기 위해 상대 위치 지정 */
             top: -25%;
-            left: 50%;
+            left: 25%;
             z-index: 2;
         }
 
@@ -129,12 +130,27 @@
             padding: 20px;
         }
 
-        /* 기존 스타일 */
+        .fourth{
+            margin-bottom: 200px;
+        }
 
         .fifth {
             position: relative;
         }
+        .third {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
+        .txt3 {
+            margin-bottom: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
+        }
+
+        .btset {
+            margin-top: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
+        }
 
 
     </style>
@@ -198,11 +214,12 @@
         <p>Where you’ll be</p>
         <p>위치 정보임 ㅇㅇㅇ</p>
     </div>
+    <div id = "map" style = "width: 80%;height: 500px;"></div>
+
 </div>
-<div id = "map" style = "width: 80%;height: 400px;"></div>
 <div class = "fifth">
 <img src = "img_5.png" style="width: 100%">
-<!-- sub에서는 figma에서 보이는 구독해달라는 창을 구현하려고 한다. 아직 미완성이라서 이곳은 질문이 필요-->
+<!--fifth에서는 figma에서 보이는 구독해달라는 sub창 구현하려고 한다.-->
     <div class = "sub" style="width: 1000px">
         <div class = txt-container" style = "width: 500px">
             <p style="font-size: 36px"><b>Subscribe to our Blog post</b></p>
@@ -212,7 +229,7 @@
         <form class="subscribe-section" method="post">
             <label for="email" style="color: white;">이메일:</label>
             <input type="email" id="email" name="email" required>
-            <a href="ThnakU.html.html"><button type="submit">구독하기</button></a>
+            <a href="ThankU.html"><button type="submit">구독하기</button></a>
         </form>
     </div>
 </div>
