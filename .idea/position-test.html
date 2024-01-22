@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <!-- 기존 meta 및 title 태그 -->
+
+    <style>
+        /* 기존 스타일 */
+
+        .sub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            background-color: #3498db;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            z-index: 2;
+        }
+
+        .sub img.overlay {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            position: absolute;
+            top: 20%; /* 이미지를 조금 더 아래로 내리도록 수정 */
+            left: 0;
+            z-index: 1;
+        }
+
+        .txt-container {
+            width: 100%;
+            color: #fff;
+            padding: 20px;
+        }
+
+        /* 기존 스타일 */
+    </style>
+</head>
+
+<body>
+<!-- 기존 body 내용 -->
+
+
+
+<div class="sub">
+    <div class="txt-container">
+        <p>Subscribe to our Blog post</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
+            Lorem Ipsum has been the industry's standard dummy text </p>
+        <form class="subscribe-section" method="post">
+            <label for="email" style="color: #000;">이메일:</label>
+            <input type="email" id="email" name="email" required>
+            <a href="ThnakU.html.html"><button type="submit">구독하기</button></a>
+        </form>
+    </div>
+</div>
+<img src="img_5.png" class="overlay" alt="Overlay Image">
+
+<!-- 기존 body 내용 -->
+</body>
+
+</html>
