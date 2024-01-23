@@ -73,32 +73,26 @@
         .txt2 p {
             margin-bottom: 10px;
         }
-        /* second part end
-        */
-        .bt {
-            display: block;
-        }
-
-        img {
-            width: 300px;
-            height: auto;
-        }
-        .footer {
+        /* second part end */
+        /*third part*/
+        .third {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-        }
-        .logo2 {
-            width: 230px;
-            height: 70px;
+            text-align: center;
         }
 
-        .foot {
-            width: 230px;
-            height: 42px;
+        .txt3 {
+            margin-bottom: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
         }
-        /* footer part*/
 
+        .btset {
+            margin-top: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
+        }
+        .fourth{
+            margin-bottom: 200px;
+        }
+        /* fifth part */
         .sub {
             display: flex;
             background-color: #263140;
@@ -123,33 +117,8 @@
             left: 0;
             z-index: 1;
         }
-
-        .txt-container {
-            width: 100%;
-            color: #fff;
-            padding: 20px;
-        }
-
-        .fourth{
-            margin-bottom: 200px;
-        }
-
         .fifth {
             position: relative;
-        }
-        .third {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .txt3 {
-            margin-bottom: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
-        }
-
-        .btset {
-            margin-top: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
         }
         .sub-input{
             margin-left: 100px;
@@ -175,32 +144,44 @@
 
         }
         .sub-input button {
-             position: relative;
-             bottom: 51px;
-             left: 380px;
-             border-radius: 40px;
-             color: white;
-             background-color: #CC7B5A;
-             border: none;
-             width: 100px;
-             height: 50px;
+            position: relative;
+            bottom: 51px;
+            left: 380px;
+            border-radius: 40px;
+            color: white;
+            background-color: #CC7B5A;
+            border: none;
+            width: 100px;
+            height: 50px;
         }
-        #modal{
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 600px;
-            height: 400px;
-            background-color: greenyellow;
-            border-radius: 30px;
-            z-index: 30;
+        .txt-container {
+            width: 100%;
+            color: #fff;
+            padding: 20px;
+        }
+        .bt {
+            display: block;
         }
 
+        img {
+            width: 300px;
+            height: auto;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo2 {
+            width: 230px;
+            height: 70px;
+        }
+
+        .foot {
+            width: 230px;
+            height: 42px;
+        }
+        /* footer part*/
     </style>
 </head>
 
@@ -230,7 +211,7 @@
 </header>
 <!-- second 파츠에서는 아래 큰 고양이와 고양이 이미지 옆에 있는 텍스트를 작성하고
 작성한 텍스트를 고양이 이미지 우측에 두도록 css 설계-->
-<div class="second">
+<section class="second">
     <img src="img_4.png" class="cat2">
     <div class="txt2">
         <p style="font-size: 36px "><b>Lorem Ipsum is simply<br>
@@ -238,10 +219,10 @@
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting<br>
             industry. </p>
     </div>
-</div>
+</section>
 <!-- third 파츠에서는 스크롤을 구현해서 버튼을 눌렀을 때 하나만 보이던 고양이 사진을
 연속으로 보여주게끔 html과 자바 스크립트를 작성했다-->
-<div class="third">
+<section class="third">
     <div class="txt3">
         <p style="font-size: 36px">dummy text of the printing and dummy</p>
         <p style="font-size: 16px">Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
@@ -252,19 +233,19 @@
         <p><b>HODU 계속 탐험하기</b></p>
         <button id="showButton" onclick="showAllImages()">더 보기</button>
     </div>
-</div>
+</section>
 <img src="Rectangle%204.png" class = "underimg" style="width: 90% ">
 <!-- 줄바꿈용 직사각형, figma에 있길레 배치해둠 -->
 <!-- fourth에서는 지도를 보여주는 html을 작성하고 그 점을 보조하는 자바스크립트를 작성함
 해당 지도는 카카오 지도 api를 참고해서 가져옴-->
-<div class = "fourth">
+<section class = "fourth">
     <div class = "txt4">
         <p>Where you’ll be</p>
         <p>제주특별자치도 제주시 첨단로 242</p>
     </div>
     <div id = "map" style = "width: 80%;height: 500px;"></div>
 
-</div>
+</section>
 <section class = "fifth">
     <img src = "img_5.png" style="width: 100%">
     <!--fifth에서는 figma에서 보이는 구독해달라는 sub창 구현하려고 한다.-->
