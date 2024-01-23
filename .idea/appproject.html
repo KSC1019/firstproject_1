@@ -151,7 +151,36 @@
         .btset {
             margin-top: 20px; /* 필요에 따라 조절할 수 있는 마진 값 */
         }
-
+        .sub-form{
+            margin-left: 100px;
+        }
+        .sub-form img{
+            position: relative;
+            left: 50px;
+            right: 7px;
+            overflow-clip-margin: content-box;
+            overflow: clip;
+        }
+        .sub-form input{
+            width: 400px;
+            height: 50px;
+            border-radius: 30px;
+            border: none;
+            margin-top: 50px;
+            font-size: 20px;
+            padding-left: 50px;
+        }
+        .sub-form button{
+            position: relative;
+            bottom: 51px;
+            left: 380px;
+            border-radius: 40px;
+            color: white;
+            background-color: #CC7B5A;
+            border: none;
+            width: 100px;
+            height: 50px;
+        }
 
     </style>
 </head>
@@ -226,11 +255,11 @@
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br>
                 Lorem Ipsum has been the industry's standard dummy text </p>
         </div>
-        <form class="subscribe-section" method="post">
-            <label for="email" style="color: white;">이메일:</label>
-            <input type="email" id="email" name="email" required>
-            <a href="ThankU.html"><button type="submit">구독하기</button></a>
-        </form>
+        <label class="sub-form" method="post">
+            <img src = "mail.svg" style="width: 24px; height: 24px">
+            <input type="text" placeholder="Email주소 입력" required maxlength="25">
+            <button type="button">Subscribe</button>
+        </label>
     </div>
 </section>
 <!-- footer는 하단의 로고와 아이콘 그룹을 배치하도록 html을 작성했다.-->
